@@ -1,19 +1,13 @@
 import React from 'react';
-import {
-	View,
-	Text,
-	StyleSheet
-} from 'react-native'
+import { View, Text, StyleSheet } from 'react-native';
 
-const Layout = (props) => {
-	return( 
+const Layout = ({ video, loader, loading }) => {
+	return (
 		<View style={styles.container}>
-			<View style={styles.video}>
-				{props.video}
-			</View>
+			<View style={styles.video}>{video}</View>
 		</View>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
@@ -26,7 +20,7 @@ const styles = StyleSheet.create({
 		top: 0,
 		bottom: 0,
 		backgroundColor: 'black',
-	}
-})
+	},
+});
 
 export default Layout;
