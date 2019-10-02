@@ -11,7 +11,7 @@ import {
 
 const styles = StyleSheet.create({
 	AndroidSafeArea: {
-		paddingTop: Platform.OS == 'android' ? StatusBar.currentHeight : 0
+		paddingTop: Platform.OS == 'android' ? StatusBar.currentHeight : 0,
 	},
 	logo: {
 		width: 80,
@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		padding: 10,
-		flexDirection: 'row', 
+		flexDirection: 'row',
 	},
 	right: {
 		flex: 1,
 		flexDirection: 'row',
-		justifyContent: 'flex-end',  
-	}
+		justifyContent: 'flex-end',
+	},
 });
 
 const Header = (props) => {
@@ -34,15 +34,15 @@ const Header = (props) => {
 		<View>
 			<SafeAreaView style={styles.AndroidSafeArea}>
 				<View style={styles.container}>
-					<Image source={require('../../../assets/logo.png')}
-					style={styles.logo}/>
-					<View style={styles.right}>
-						{props.children}
-					</View>
+					<Image
+						source={require('../../../assets/logo.png')}
+						style={styles.logo}
+					/>
+					<View style={styles.right}>{props.children}</View>
 				</View>
 			</SafeAreaView>
 		</View>
 	);
-}
+};
 
 export default Header;

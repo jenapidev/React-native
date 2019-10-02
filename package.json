@@ -8,12 +8,17 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.2",
     "expo": "^34.0.1",
     "expo-av": "^6.0.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-web": "^0.11.4"
+    "react-native-cli": "^2.0.1",
+    "react-native-web": "^0.11.4",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^6.0.0"
