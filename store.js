@@ -9,6 +9,7 @@ import videos from './reducers/video';
 const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
+	blackList: ['selectedMovie'],
 };
 
 const persistedReducer = persistReducer(persistConfig, videos);

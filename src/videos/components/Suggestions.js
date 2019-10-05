@@ -1,40 +1,36 @@
 import React from 'react';
-import {
-	Text,
-	View,
-	Image,
-	StyleSheet
-} from 'react-native'
-
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Suggestion = (props) => {
-	return(
-		<View style={styles.container}>
-			<View style={styles.left}>
-				<Image
-					style={styles.cover}
-					source={{
-						uri: props.medium_cover_image
-					}}
-				/>
-				<View style={styles.genre}>
-					<Text style={styles.genreText}>{props.genres[0]}</Text>
+	return (
+		<TouchableOpacity onPress={props.onPress}>
+			<View style={styles.container}>
+				<View style={styles.left}>
+					<Image
+						style={styles.cover}
+						source={{
+							uri: props.medium_cover_image,
+						}}
+					/>
+					<View style={styles.genre}>
+						<Text style={styles.genreText}>{props.genres[0]}</Text>
+					</View>
+				</View>
+				<View style={styles.right}>
+					<Text style={styles.title}>{props.title}</Text>
+					<Text style={styles.year}>{props.year}</Text>
+					<Text style={styles.rating}>Rating {props.rating}/10</Text>
 				</View>
 			</View>
-			<View style={styles.right}>
-				<Text style={styles.title}>{props.title}</Text>
-				<Text style={styles.year}>{props.year}</Text>
-				<Text style={styles.rating}>Rating {props.rating}/10</Text>
-			</View>
-		</View>
+		</TouchableOpacity>
 	);
-}
+};
 
 const styles = StyleSheet.create({
-	container:{
+	container: {
 		flexDirection: 'row',
 	},
-	genre:{
+	genre: {
 		position: 'absolute',
 		left: 0,
 		top: 0,
@@ -55,11 +51,11 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		justifyContent: 'space-between',
 	},
-	title:{
+	title: {
 		fontSize: 18,
 		color: '#44546b',
 	},
-	year:{
+	year: {
 		backgroundColor: '#70b124',
 		paddingVertical: 4,
 		paddingHorizontal: 6,
@@ -67,9 +63,9 @@ const styles = StyleSheet.create({
 		fontSize: 11,
 		borderRadius: 5,
 		overflow: 'hidden',
-		alignSelf: 'flex-start'
+		alignSelf: 'flex-start',
 	},
-	rating:{
+	rating: {
 		color: '#6b6b6b',
 		fontSize: 14,
 		fontWeight: 'bold',
