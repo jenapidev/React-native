@@ -1,8 +1,9 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import { AsyncStorage } from 'react-native';
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
-import videos from './reducers/video';
+import Reducer from './reducers/index';
 //import storage from 'redux-persist/lib/storage';
 //import AsyncStorage from '@react-native-community/async-storage';
 
@@ -12,9 +13,15 @@ const persistConfig = {
 	blackList: ['selectedMovie'],
 };
 
-const persistedReducer = persistReducer(persistConfig, videos);
+const AppReducer = persistReducer(persistConfig, Reducer);
 
-const store = createStore(persistedReducer);
+const middleware = createReactNavigationReduxMiddleware(
+	state => state.navigation,
+);
+
+const store = createStore(AppReducer, applyMiddleware(middleware));
 const persistor = persistStore(store);
 
-export { store, persistor };
+const AppStore = { store, persistor };
+
+export default AppStore;

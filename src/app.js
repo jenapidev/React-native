@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import Api from '../utils/Api';
@@ -47,6 +48,12 @@ class AppLayout extends React.Component {
 		);
 	}
 }
+
+const navigateAction = NavigationActions.navigate({
+	routeName: 'Movie',
+	params: {},
+	//action: NavigationActions.navigate({ routeName: '' }),
+});
 
 const mapStateToProps = (state) => {
 	return {
