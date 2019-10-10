@@ -10,13 +10,13 @@ import Reducer from './reducers/index';
 const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
-	blackList: ['selectedMovie'],
+	blackList: ['selectedMovie', 'navigation'],
 };
 
 const AppReducer = persistReducer(persistConfig, Reducer);
 
 const middleware = createReactNavigationReduxMiddleware(
-	state => state.navigation,
+	(state) => state.navigation,
 );
 
 const store = createStore(AppReducer, applyMiddleware(middleware));

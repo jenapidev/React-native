@@ -5,6 +5,7 @@ import Empty from '../../sections/components/Empty';
 import Separator from '../../sections/components/Vertical_separator';
 import Suggestion from '../components/Suggestions';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 class SuggestionsList extends React.Component {
 	keyExtractor = (item) => item.id.toString();
@@ -17,6 +18,11 @@ class SuggestionsList extends React.Component {
 				movie: item,
 			},
 		});
+		this.props.dispatch(
+			NavigationActions.navigate({
+				routeName: 'Movie',
+			}),
+		);
 	};
 	renderListItem = ({ item }) => {
 		return (
@@ -45,7 +51,7 @@ class SuggestionsList extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		list: state.suggestionList,
+		list: state.videos.suggestionList,
 	};
 };
 

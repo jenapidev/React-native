@@ -12,7 +12,7 @@ import AppNavigatorWithState from './src/app-navigator-with-state';
 type Props = {};
 export default class App extends React.Component<Props> {
 	render() {
-		const { store , persistor } = AppStore
+		const { store, persistor } = AppStore;
 		return (
 			<Provider store={store}>
 				<PersistGate loading={<Loader />} persistor={persistor}>

@@ -1,34 +1,43 @@
 import React from 'react';
-import { Text, View, FlatList, StyleSheet } from 'react-native';
+import { FlatList, Text } from 'react-native';
+import Layout from '../../videos/components/Suggestions-layout';
 import Empty from '../../sections/components/Empty';
-import Separator from '../../sections/components/Horizontal_separator';
-import Category from '../components/Category';
-import Layout from '../components/Category-layout';
+import Separator from '../../sections/components/Vertical_separator';
+import Suggestion from '../../videos/components/Suggestions';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
-class CategoryList extends React.Component {
+class Category extends React.Component {
 	keyExtractor = (item) => item.id.toString();
 	RenderEmpty = () => <Empty text='There are no suggestions for you :(' />;
 	itemSeparator = () => <Separator />;
-	viewCategory = (item) => {
+	viewMovie = (item) => {
+		this.props.dispatch({
+			type: 'SET_SELECTED_MOVIE',
+			payload: {
+				movie: item,
+			},
+		});
 		this.props.dispatch(
 			NavigationActions.navigate({
-				routeName: 'Category',
-				params: {
-					genre: item.genres[0],
-				},
+				routeName: 'Movie',
 			}),
 		);
 	};
 	renderListItem = ({ item }) => {
-		return <Category onPress={() => this.viewCategory(item)} {...item} />;
+		return (
+			<Suggestion
+				{...item}
+				onPress={() => {
+					this.viewMovie(item);
+				}}
+			/>
+		);
 	};
 	render() {
 		return (
-			<Layout title='Categories'>
+			<Layout title={`${this.props.navigation.getParam('genre')}`}>
 				<FlatList
-					horizontal={true}
 					keyExtractor={this.keyExtractor}
 					data={this.props.list}
 					ListEmptyComponent={this.RenderEmpty}
@@ -42,8 +51,8 @@ class CategoryList extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		list: state.videos.categoryList,
+		list: state.videos.suggestionList,
 	};
 };
 
-export default connect(mapStateToProps)(CategoryList);
+export default connect(mapStateToProps)(Category);

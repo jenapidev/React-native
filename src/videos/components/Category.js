@@ -1,25 +1,23 @@
 import React from 'react';
-import { Video } from 'expo-av'
 import {
-	View,
 	Text,
 	StyleSheet,
 	ImageBackground,
-	Platform
+	Platform,
+	TouchableOpacity,
 } from 'react-native';
 
-
 const Category = (props) => {
-	return(
-		<ImageBackground 
-			style={styles.wrapper}
-			source={{ uri: props.background_image}}
-			>
-			<Text style={styles.genre}>{props.genres[0]}</Text>
-		</ImageBackground>
-	)
-}
-
+	return (
+		<TouchableOpacity onPress={props.onPress}>
+			<ImageBackground
+				style={styles.wrapper}
+				source={{ uri: props.background_image }}>
+				<Text style={styles.genre}>{props.genres[0]}</Text>
+			</ImageBackground>
+		</TouchableOpacity>
+	);
+};
 
 const styles = StyleSheet.create({
 	wrapper: {
@@ -27,7 +25,7 @@ const styles = StyleSheet.create({
 		height: 100,
 		borderRadius: 10,
 		overflow: 'hidden',
-		justifyContent: 'center',	
+		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	genre: {
@@ -37,17 +35,17 @@ const styles = StyleSheet.create({
 		textShadowColor: 'rgba(0, 0, 0, .75)',
 		textShadowOffset: {
 			width: 2,
-			height: 2
+			height: 2,
 		},
 		...Platform.select({
-			ios:{
+			ios: {
 				textShadowRadius: 0,
 			},
 			androird: {
-				elevation: 2
-			}
-		})
-	}
-})
+				elevation: 2,
+			},
+		}),
+	},
+});
 
 export default Category;

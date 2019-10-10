@@ -12,6 +12,7 @@ import {
 const styles = StyleSheet.create({
 	AndroidSafeArea: {
 		paddingTop: Platform.OS == 'android' ? StatusBar.currentHeight : 0,
+		backgroundColor: 'white',
 	},
 	logo: {
 		width: 80,
@@ -19,7 +20,8 @@ const styles = StyleSheet.create({
 		resizeMode: 'contain',
 	},
 	container: {
-		padding: 10,
+		paddingVertical: 10,
+		paddingHorizontal: 10,
 		flexDirection: 'row',
 	},
 	right: {

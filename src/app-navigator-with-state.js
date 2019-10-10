@@ -6,8 +6,8 @@ const AppNavigatorWithState = createReduxContainer(AppNavigator);
 
 function mapStateToProps(state) {
 	return {
-        state: state.navigation
-    }
-};
+		state: state.navigation,
+	};
+}
 
 export default connect(mapStateToProps)(AppNavigatorWithState);

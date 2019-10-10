@@ -7,19 +7,20 @@ import Details from '../../videos/components/Details';
 import { connect } from 'react-redux';
 
 class Movie extends React.Component {
-	closeVideo = () => {
-		this.props.dispatch({
-			type: 'SET_SELECTED_MOVIE_FALSE',
-		});
+	static navigationOptions = ({ navigation }) => {
+		return {
+			header: (
+				<Header>
+					<Close onPress={() => navigation.goBack()} />
+				</Header>
+			),
+		};
 	};
 
 	render() {
 		const { movie } = this.props;
 		return (
 			<Layout>
-				<Header>
-					<Close onPress={this.closeVideo} />
-				</Header>
 				<Player />
 				<Details {...movie} />
 			</Layout>
@@ -28,7 +29,7 @@ class Movie extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return { movie: state.selectedMovie };
+	return { movie: state.videos.selectedMovie };
 };
 
 export default connect(mapStateToProps)(Movie);
