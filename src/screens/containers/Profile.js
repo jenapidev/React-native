@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, Platform } from 'react-native';
-import Search from '../../sections/containers/search';
+import {
+	View,
+	Text,
+	SafeAreaView,
+	StyleSheet,
+	Button,
+	StatusBar,
+	Platform,
+} from 'react-native';
+import { connect } from 'react-redux';
 import Icon from '../../sections/components/icon';
 
-class Lucky extends Component {
+class Profile extends Component {
 	static navigationOptions = () => {
 		return {
-			title: 'Feel lucky',
-			tabBarIcon: <Icon icon='⭐️' />,
-			drawerIcon: <Icon icon='⭐️' />,
+			title: 'Profile',
+			tabBarIcon: <Icon icon='😎' />,
 		};
 	};
 
@@ -25,10 +32,10 @@ class Lucky extends Component {
 
 	render() {
 		return (
-			<View style={styles.container}>
-				<Text>🍀</Text>
-				<Search />
-			</View>
+			<SafeAreaView style={styles.container}>
+				<Text>Nombre de usuario</Text>
+				<Button title='Cerrar sesión' color='#67a52e' />
+			</SafeAreaView>
 		);
 	}
 }
@@ -41,4 +48,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Lucky;
+export default Profile;

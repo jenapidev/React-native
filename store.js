@@ -4,24 +4,23 @@ import { AsyncStorage } from 'react-native';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
 import Reducer from './reducers/index';
-//import storage from 'redux-persist/lib/storage';
-//import AsyncStorage from '@react-native-community/async-storage';
 
-// const persistConfig = {
-// 	key: 'root',
-// 	storage: AsyncStorage,
-// 	blackList: ['selectedMovie', 'navigation'],
-// };
+const persistConfig = {
+	key: 'root',
+	storage: AsyncStorage,
+	blackList: ['selectedMovie', 'navigation'],
+};
 
-// const AppReducer = persistReducer(persistConfig, Reducer);
+const AppReducer = persistReducer(persistConfig, Reducer);
 
-// const middleware = createReactNavigationReduxMiddleware(
-// 	(state) => state.navigation,
-// );
+const middleware = createReactNavigationReduxMiddleware(
+	(state) => state.navigation,
+	'root',
+);
 
-const store = createStore(Reducer);
-// const persistor = persistStore(store);
+const store = createStore(AppReducer, applyMiddleware(middleware));
+const persistor = persistStore(store);
 
-// const AppStore = { store, persistor };
+const AppStore = { store, persistor };
 
-export default store;
+export default AppStore;
