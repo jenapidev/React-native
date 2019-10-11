@@ -31,12 +31,4 @@ const TabNavigator = createBottomTabNavigator({
 
 const App = createAppContainer(TabNavigator);
 
-class AppRouter extends React.Component {
-	static router = App.router;
-
-	render() {
-		return <App />;
-	}
-}
-
-export default AppRouter;
+export default App;

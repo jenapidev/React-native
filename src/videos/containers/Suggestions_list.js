@@ -38,7 +38,6 @@ class SuggestionsList extends React.Component {
 		return (
 			<Layout title='Suggestions for you'>
 				<FlatList
-					keyExtractor={this.keyExtractor}
 					data={this.props.list}
 					ListEmptyComponent={this.RenderEmpty}
 					ItemSeparatorComponent={this.itemSeparator}
