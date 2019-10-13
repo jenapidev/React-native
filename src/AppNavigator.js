@@ -1,5 +1,5 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
+
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './screens/containers/Home';
@@ -33,19 +33,18 @@ const TabNavigator = createBottomTabNavigator(
 				tabBarIcon: <Icon icon='🏠' />,
 			},
 		},
-		About: About,
-		Lucky: Lucky,
-		Profile: Profile,
+		About: { screen: About },
+		Lucky: { screen: Lucky },
+		Profile: { screen: Profile },
 	},
 	{
 		tabBarOptions: {
 			activeTintColor: 'white',
 			activeBackgroundColor: '#65a721',
 		},
-		swipeEnabled: true,
 	},
 );
 
-const App = createAppContainer(TabNavigator);
+//const App = createAppContainer(TabNavigator);
 
-export default App;
+export default TabNavigator;

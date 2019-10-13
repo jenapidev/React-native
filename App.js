@@ -4,10 +4,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './store';
 import Loader from './src/sections/components/loader';
-import AppNavigatorWithState from './src/app-navigator-with-state';
+import ReduxNavigation from './src/app-navigator-with-state';
+import { createAppContainer } from 'react-navigation';
+
 //import AppLayout from './src/app';
 
 //const store = createStore(videos, {});
+
+const Navigation = createAppContainer(ReduxNavigation);
 
 type Props = {};
 export default class App extends React.Component<Props> {
@@ -15,7 +19,7 @@ export default class App extends React.Component<Props> {
 		return (
 			<Provider store={store}>
 				<PersistGate persistor={persistor} loading={<Loader />}>
-					<AppNavigatorWithState />
+					<Navigation />
 				</PersistGate>
 			</Provider>
 		);

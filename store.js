@@ -8,19 +8,14 @@ import Reducer from './reducers/index';
 const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
-	blackList: ['selectedMovie', 'navigation'],
+	blackList: [],
 };
 
 const AppReducer = persistReducer(persistConfig, Reducer);
 
 const middleware = createReactNavigationReduxMiddleware(
 	(state) => state.navigation,
-	'root',
 );
 
-const store = createStore(AppReducer, applyMiddleware(middleware));
-const persistor = persistStore(store);
-
-const AppStore = { store, persistor };
-
-export default AppStore;
+export const store = createStore(AppReducer, applyMiddleware(middleware));
+export const persistor = persistStore(store);
