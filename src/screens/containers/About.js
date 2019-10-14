@@ -5,7 +5,7 @@ import Icon from '../../sections/components/icon';
 class About extends Component {
 	static navigationOptions = () => {
 		return {
-			title: 'Sobre esta app',
+			title: 'About',
 			tabBarIcon: <Icon icon='🤓' />,
 			drawerIcon: <Icon icon='🤓' />,
 		};

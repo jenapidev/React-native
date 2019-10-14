@@ -15,11 +15,11 @@ import Reducer from './reducers/index';
 
 // const AppReducer = persistReducer(persistConfig, Reducer);
 
-// const middleware = createReactNavigationReduxMiddleware(
-// 	(state) => state.navigation,
-// );
+const middleware = createReactNavigationReduxMiddleware(
+	(state) => state.navigation,
+);
 
-const store = createStore(Reducer);
+const store = createStore(Reducer, applyMiddleware(middleware));
 // const persistor = persistStore(store);
 
 // const AppStore = { store, persistor };

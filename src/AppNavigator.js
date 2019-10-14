@@ -24,11 +24,15 @@ const Main = createStackNavigator(
 		},
 	},
 );
-//const app = createAppContainer(Main);
 
 const TabNavigator = createBottomTabNavigator(
 	{
-		Main,
+		Home: {
+			screen: Main,
+			navigationOptions: {
+				tabBarIcon: <Icon icon='🏠' />,
+			},
+		},
 		About,
 		Lucky,
 		Profile,
