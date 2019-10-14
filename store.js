@@ -1,21 +1,30 @@
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import reducer from './reducers/index';
 import { AsyncStorage } from 'react-native';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
-import Reducer from './reducers/index';
+// const store = createStore(reducer, {
+//   suggestionList: [],
+//   categoryList: [],
+// })
 
 const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
-	blackList: [],
+	blacklist: ['navigation'],
 };
 
-const AppReducer = persistReducer(persistConfig, Reducer);
+const persistedReducer = persistReducer(persistConfig, reducer);
 
-const middleware = createReactNavigationReduxMiddleware(
+const navigationMiddleware = createReactNavigationReduxMiddleware(
 	(state) => state.navigation,
 );
 
-export const store = createStore(AppReducer, applyMiddleware(middleware));
-export const persistor = persistStore(store);
+const store = createStore(
+	persistedReducer,
+	applyMiddleware(navigationMiddleware),
+);
+const persistor = persistStore(store);
+
+export { store, persistor };
