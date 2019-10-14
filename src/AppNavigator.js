@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './screens/containers/Home';
@@ -45,6 +45,15 @@ const TabNavigator = createBottomTabNavigator(
 	},
 );
 
-//const App = createAppContainer(TabNavigator);
+const SwitchNavigator = createSwitchNavigator(
+	{
+		App: TabNavigator,
+		Loading: Loading,
+		Login: Login,
+	},
+	{
+		initialRouteName: 'Login',
+	},
+);
 
-export default TabNavigator;
+export default SwitchNavigator;

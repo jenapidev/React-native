@@ -12,7 +12,7 @@ import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-hel
 const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
-	blacklist: ['navigation'],
+	blacklist: ['navigation', 'selectedMovie'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
