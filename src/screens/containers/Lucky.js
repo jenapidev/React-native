@@ -6,11 +6,7 @@ import Icon from '../../sections/components/icon';
 class Lucky extends Component {
 	static navigationOptions = () => {
 		return {
-<<<<<<< HEAD
-			title: 'Lucky',
-=======
 			title: 'Feel lucky',
->>>>>>> persistor
 			tabBarIcon: <Icon icon='⭐️' />,
 			drawerIcon: <Icon icon='⭐️' />,
 		};
