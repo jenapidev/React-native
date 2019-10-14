@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
+import {
+	View,
+	Text,
+	StyleSheet,
+	Image,
+	StatusBar,
+	Platform,
+} from 'react-native';
 import Icon from '../../sections/components/icon';
 
 class About extends Component {
@@ -10,15 +17,18 @@ class About extends Component {
 			drawerIcon: <Icon icon='🤓' />,
 		};
 	};
+
 	componentDidMount() {
-		this.focus = this.props.navigation.addListener('didFocus', () => {
+		this._navListener = this.props.navigation.addListener('didFocus', () => {
 			StatusBar.setBarStyle('light-content');
-			StatusBar.setBackgroundColor('#022c43');
+			Platform.OS === 'android' && StatusBar.setBackgroundColor('#022c43');
 		});
 	}
+
 	componentWillUnmount() {
-		this.focus.remove();
+		this._navListener.remove();
 	}
+
 	render() {
 		return (
 			<View style={styles.container}>

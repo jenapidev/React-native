@@ -1,5 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
 
+=======
+>>>>>>> persistor
 import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -24,6 +27,7 @@ const Main = createStackNavigator(
 		},
 	},
 );
+<<<<<<< HEAD
 
 const TabNavigator = createBottomTabNavigator(
 	{
@@ -50,3 +54,39 @@ export default switchNavigator = createSwitchNavigator({
 	Home: TabNavigator,
 });
 //const App = createAppContainer(TabNavigator);
+=======
+//const app = createAppContainer(Main);
+
+const TabNavigator = createBottomTabNavigator(
+	{
+		Home: {
+			screen: Main,
+			navigationOptions: {
+				tabBarIcon: <Icon icon='🏠' />,
+			},
+		},
+		About: { screen: About },
+		Lucky: { screen: Lucky },
+		Profile: { screen: Profile },
+	},
+	{
+		tabBarOptions: {
+			activeTintColor: 'white',
+			activeBackgroundColor: '#65a721',
+		},
+	},
+);
+
+const SwitchNavigator = createSwitchNavigator(
+	{
+		App: TabNavigator,
+		Loading: Loading,
+		Login: Login,
+	},
+	{
+		initialRouteName: 'Login',
+	},
+);
+
+export default SwitchNavigator;
+>>>>>>> persistor

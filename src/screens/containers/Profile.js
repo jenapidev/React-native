@@ -6,6 +6,10 @@ import {
 	StyleSheet,
 	Button,
 	StatusBar,
+<<<<<<< HEAD
+=======
+	Platform,
+>>>>>>> persistor
 } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from '../../sections/components/icon';
@@ -17,6 +21,7 @@ class Profile extends Component {
 			tabBarIcon: <Icon icon='😎' />,
 		};
 	};
+<<<<<<< HEAD
 	componentDidMount() {
 		this.focus = this.props.navigation.addListener('didFocus', () => {
 			StatusBar.setBarStyle('dark-content');
@@ -41,6 +46,25 @@ class Profile extends Component {
 					color='#67a52e'
 					onPress={this.handleLogout}
 				/>
+=======
+
+	componentDidMount() {
+		this._navListener = this.props.navigation.addListener('didFocus', () => {
+			StatusBar.setBarStyle('dark-content');
+			Platform.OS === 'android' && StatusBar.setBackgroundColor('white');
+		});
+	}
+
+	componentWillUnmount() {
+		this._navListener.remove();
+	}
+
+	render() {
+		return (
+			<SafeAreaView style={styles.container}>
+				<Text>Nombre de usuario</Text>
+				<Button title='Cerrar sesión' color='#67a52e' />
+>>>>>>> persistor
 			</SafeAreaView>
 		);
 	}
@@ -54,6 +78,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+<<<<<<< HEAD
 function mapStateToProps(state) {
 	return {
 		user: state.user,
@@ -61,3 +86,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Profile);
+=======
+export default Profile;
+>>>>>>> persistor

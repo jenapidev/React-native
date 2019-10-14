@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, StatusBar, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
 import Api from '../../../utils/Api';
@@ -21,6 +21,11 @@ class Home extends React.Component {
 	};
 
 	async componentDidMount() {
+		this._navListener = this.props.navigation.addListener('didFocus', () => {
+			StatusBar.setBarStyle('light-content');
+			Platform.OS === 'android' && StatusBar.setBackgroundColor('#6a51ae');
+		});
+
 		const suggestionList = await Api.getSuggestion(10);
 		this.props.dispatch({
 			type: 'SET_MOVIE_LIST',
@@ -35,6 +40,10 @@ class Home extends React.Component {
 		// suggestionsList: suggestionList,
 		// 	categoryList: categoryList,
 		// });
+	}
+
+	componentWillUnmount() {
+		this._navListener.remove();
 	}
 
 	render() {
