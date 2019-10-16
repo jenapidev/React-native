@@ -12,9 +12,9 @@ const Suggestion = (props) => {
 							uri: props.medium_cover_image,
 						}}
 					/>
-					<View style={styles.genre}>
+					{/* <View style={styles.genre}>
 						<Text style={styles.genreText}>{props.genres[0]}</Text>
-					</View>
+					</View> */}
 				</View>
 				<View style={styles.right}>
 					<Text style={styles.title}>{props.title}</Text>

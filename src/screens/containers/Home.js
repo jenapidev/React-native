@@ -22,7 +22,7 @@ class Home extends React.Component {
 
 	async componentDidMount() {
 		this._navListener = this.props.navigation.addListener('didFocus', () => {
-			StatusBar.setBarStyle('light-content');
+			StatusBar.setBarStyle('dark-content');
 			Platform.OS === 'android' && StatusBar.setBackgroundColor('#6a51ae');
 		});
 

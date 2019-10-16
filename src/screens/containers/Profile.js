@@ -9,6 +9,7 @@ import {
 	Platform,
 } from 'react-native';
 import Icon from '../../sections/components/icon';
+import { connect } from 'react-redux';
 
 class Profile extends Component {
 	static navigationOptions = () => {
@@ -29,11 +30,18 @@ class Profile extends Component {
 		this._navListener.remove();
 	}
 
+	handlePress = () => {
+		this.props.dispatch({
+			type: 'REMOVE_USER',
+		});
+		this.props.navigation.navigate('Loading');
+	};
+
 	render() {
 		return (
 			<SafeAreaView style={styles.container}>
-				<Text>Nombre de usuario</Text>
-				<Button title='Cerrar sesión' color='#67a52e' />
+				<Text>Username</Text>
+				<Button title='Logout' color='#67a52e' onPress={this.handlePress} />
 			</SafeAreaView>
 		);
 	}
@@ -47,4 +55,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Profile;
+export default connect(null)(Profile);

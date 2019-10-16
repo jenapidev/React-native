@@ -17,14 +17,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-<<<<<<< HEAD
-const middleware = createReactNavigationReduxMiddleware(
-	(state) => state.navigation,
-);
-
-const store = createStore(Reducer, applyMiddleware(middleware));
-// const persistor = persistStore(store);
-=======
 const navigationMiddleware = createReactNavigationReduxMiddleware(
 	(state) => state.navigation,
 );
@@ -34,6 +26,5 @@ const store = createStore(
 	applyMiddleware(navigationMiddleware),
 );
 const persistor = persistStore(store);
->>>>>>> persistor
 
 export { store, persistor };
